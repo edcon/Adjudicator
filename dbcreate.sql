@@ -1,6 +1,7 @@
 DROP DATABASE IF EXISTS login;
 CREATE DATABASE login;
-DROP USER superman@localhost;
+GRANT USAGE ON *.* TO 'superman'@'localhost';
+DROP USER 'superman'@'localhost';
 CREATE USER 'superman'@'localhost' IDENTIFIED BY 'kryptonite';
 GRANT ALL ON login.* TO 'superman'@'localhost';
 USE login;

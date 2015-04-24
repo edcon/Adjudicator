@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS login;
 CREATE DATABASE login;
-CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin';
-GRANT ALL ON login .* TO 'admin'@'localhost';
+CREATE USER 'superman'@'localhost' IDENTIFIED BY 'kryptonite';
+GRANT ALL ON login .* TO 'superman'@'localhost';
 FLUSH PRIVELEGES;
 USE login;
 

@@ -1,1 +1,2 @@
 nerds
+https://dev.mysql.com/downloads/connector/j/5.0.html

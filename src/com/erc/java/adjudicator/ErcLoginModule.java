@@ -1,6 +1,11 @@
 package com.erc.java.adjudicator;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -14,8 +19,6 @@ import javax.security.auth.callback.UnsupportedCallbackException;
 import javax.security.auth.login.LoginException;
 import javax.security.auth.spi.LoginModule;
 
-import com.erc.java.adjudicator.RolePrincipal;
-import com.erc.java.adjudicator.UserPrincipal;
 
 public class ErcLoginModule implements LoginModule {
 
@@ -54,15 +57,49 @@ public class ErcLoginModule implements LoginModule {
 				// It can be a Database, an external LDAP, a Web Service, etc.
 				// For this tutorial we are just checking if user is "user123" and
 				// password is "pass123"
-				if (name != null &&
-						name.equals("user123") && 
-						password != null && 
-						password.equals("pass123")) {
-					login = name;
-					userGroups = new ArrayList<String>();
-					userGroups.add("admin");
-					return true;
-				}
+				
+				
+				if (name != null &&	password != null) {
+					
+					Connection connection = null; // manages connection
+				    PreparedStatement pt = null; // manages prepared statement
+
+				        // connect to database usernames and query database
+				        try {
+				        	String url = "jdbc::mysql://localhost::3306/login";
+				            // establish connection to database
+				            Class.forName("com.mysql.jdbc.Driver");
+				            Connection con = DriverManager.getConnection(url, "root", "youbleedSupes");
+
+				            // query database
+				            pt = con.prepareStatement("SELECT username,password FROM login.users WHERE username=?");
+				            pt.setString(1, name);
+				            
+				            // process query results
+				            ResultSet rs = pt.executeQuery();
+				            
+				           
+				                String dbUser = rs.getString("username");
+				                String dbPass = rs.getString("password");
+				          
+				            if (dbPass.equals(password)) {
+				            	login = name;
+								userGroups = new ArrayList<String>();
+								userGroups.add("admin");	               
+				                rs.close();
+				                return true;
+				            } 
+				        }//end try
+				        catch (SQLException ex) {
+				        } //end catch  
+				        catch (ClassNotFoundException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+				        
+				    } //end main
+				
+				
 
 				// If credentials are NOT OK we throw a LoginException
 				throw new LoginException("Authentication failed");

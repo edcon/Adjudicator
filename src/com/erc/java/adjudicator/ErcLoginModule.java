@@ -98,9 +98,8 @@ public class ErcLoginModule implements LoginModule {
 
 		@Override
 		public boolean logout() throws LoginException {
-			subject.getPrincipals().remove(userPrincipal);
-			subject.getPrincipals().remove(rolePrincipal);
-			return true;
+		  subject.getPrincipals().remove(userPrincipal);
+		  subject.getPrincipals().remove(rolePrincipal);
+		  return true;
 		}
-
 }

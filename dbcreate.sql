@@ -1,9 +1,11 @@
 DROP DATABASE IF EXISTS login;
 CREATE DATABASE login;
+GRANT USAGE ON *.* TO 'superman'@'localhost';
+DROP USER 'superman'@'localhost';
 CREATE USER 'superman'@'localhost' IDENTIFIED BY 'kryptonite';
-GRANT ALL ON login .* TO 'superman'@'localhost';
-FLUSH PRIVELEGES;
+GRANT ALL ON login.* TO 'superman'@'localhost';
 USE login;
+FLUSH PRIVILEGES;
 
 CREATE TABLE login.users(
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,

@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.security.auth.Subject;
 import javax.security.auth.callback.Callback;
@@ -21,7 +23,7 @@ import javax.security.auth.spi.LoginModule;
 
 
 public class ErcLoginModule implements LoginModule {
-
+	private static final Logger log = Logger.getLogger( ErcLoginModule.class.getName() );
 	
 	  private CallbackHandler handler;
 	  private Subject subject;
@@ -63,34 +65,42 @@ public class ErcLoginModule implements LoginModule {
 					
 					Connection connection = null; // manages connection
 				    PreparedStatement pt = null; // manages prepared statement
+	                log.log(Level.FINE, "OUTSIDE OF TRY: %@\n", name);
 
 				        // connect to database usernames and query database
 				        try {
-				        	String url = "jdbc::mysql://localhost::3306/login";
+				        	String url = "jdbc:mysql://localhost:3306/login";
 				            // establish connection to database
 				            Class.forName("com.mysql.jdbc.Driver");
 				            Connection con = DriverManager.getConnection(url, "root", "youbleedSupes");
 
 				            // query database
-				            pt = con.prepareStatement("SELECT username,password FROM login.users WHERE username=?");
+				            pt = con.prepareStatement("SELECT * FROM login.users WHERE username=?");
 				            pt.setString(1, name);
 				            
 				            // process query results
 				            ResultSet rs = pt.executeQuery();
 				            
-				           
-				                String dbUser = rs.getString("username");
-				                String dbPass = rs.getString("password");
-				          
+				            if(rs.next()){
+				                String dbUser; 
+				                String dbPass;
+				                dbUser = rs.getString("username");
+				                dbPass = rs.getString("password");
+				                System.out.println(dbUser);
+
 				            if (dbPass.equals(password)) {
 				            	login = name;
 								userGroups = new ArrayList<String>();
 								userGroups.add("admin");	               
 				                rs.close();
 				                return true;
+				            }
+				           
+		
 				            } 
 				        }//end try
 				        catch (SQLException ex) {
+				        	ex.printStackTrace();
 				        } //end catch  
 				        catch (ClassNotFoundException e) {
 							// TODO Auto-generated catch block

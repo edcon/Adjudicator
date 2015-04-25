@@ -115,7 +115,7 @@ public class dbHelper {
 	}
 
 	public boolean insertUser(String username, String password, String role){
-		
+
 		if(nameExists(username)){
 			return false;
 		}
@@ -134,9 +134,9 @@ public class dbHelper {
 	            // query database
 	            pt = con.prepareStatement("INSERT INTO login.users(username, password, role) VALUES (?,?,?);");
 	            pt.setString(1, username);
-	            pt.setString(1, password);
-	            pt.setString(1, role);
-	            
+	            pt.setString(2, password);
+	            pt.setString(3, role);
+	            pt.execute();
 	        }//end try
 	        catch (SQLException ex) {
 	        	ex.printStackTrace();

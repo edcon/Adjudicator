@@ -20,29 +20,16 @@ String username = request.getRemoteUser();
 
 %>
 
-<form method=post action="../index.html">
+<form method=post action="newUserScript.jsp">
     <input type="text" name="newUsername" placeholder="Username">
     <input type="password" name="newPassword" placeholder="Password">
-    <select id="roleDropdown">
-			<option value="GODMODE" >GODMODE</option>
+    <select name="roleDropdown">
 			<option value="ADMIN">ADMIN</option>
 			<option value="USER">USER</option>
 			<option value="PEON">PEON</option>
 	</select> <input type="submit" name="Create" value="Create User">
   </form>
-    <% String newUsername = request.getParameter("newUsername");%>
-    <% String newPassword = request.getParameter("newPassword"); %>
-    <% String newRole = request.getParameter("roleDropdown"); %>
 
-
- <%
- dbHelper t=new dbHelper();
- boolean insertedUser = t.insertUser(newUsername,newPassword,newRole);
- if(!insertedUser){
-	 
- }
- 
- %>   
     
     
 <span>Hello <%= username %>. This is a secure resource (admin)</span>

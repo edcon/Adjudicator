@@ -84,14 +84,17 @@ public class ErcLoginModule implements LoginModule {
 				            if(rs.next()){
 				                String dbUser; 
 				                String dbPass;
+				                String dbRole;
 				                dbUser = rs.getString("username");
 				                dbPass = rs.getString("password");
-				                System.out.println(dbUser);
+				                dbRole = rs.getString("role");
+				       
+				                System.out.println(dbRole);
 
 				            if (dbPass.equals(password)) {
 				            	login = name;
 								userGroups = new ArrayList<String>();
-								userGroups.add("admin");	               
+								userGroups.add(dbRole);	               
 				                rs.close();
 				                return true;
 				            }

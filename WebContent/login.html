@@ -1,24 +1,29 @@
-
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+
 <head>
-<meta charset="ISO-8859-1">
+
+  <meta charset="UTF-8">
+
   <title>Login</title>
+
+
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
+
 <body>
-  <form method=post action="j_security_check" >
-    <p>
-      <span>Username:</span>
-      <br />
-      <input type="text"  name= "j_username" >
-    </p>
-    <p>
-      <span>Password:</span>
-      <br />
-      <input type="password"  name= "j_password" >
-    </p>
-    <p>
-      <input type="submit" value="Login">
-    </p>
+
+  <div class="login-card">
+    <h1>Log-in</h1><br>
+  <form method=post action="j_security_check">
+    <input type="text" name="j_username" placeholder="Username">
+    <input type="password" name="j_password" placeholder="Password">
+    <input type="submit" name="login" class="login login-submit" value="login">
   </form>
+</div>
+
+
 </body>
+
+</html>

@@ -9,6 +9,7 @@
 <meta http-equiv="Content-Type" 
   content="text/html; charset=UTF-8" />
 <title>Welcome</title>
+<link rel="stylesheet" href="../css/tablestyle.css" type="text/css"/>
 </head>
 <body>
 <%@ page import= "com.erc.java.adjudicator.dbHelper"%>
@@ -20,18 +21,21 @@
 <%@ page import= "java.util.ArrayList" %>
 <%
 String username = request.getRemoteUser();
-dbHelper t=new dbHelper();
+System.out.println("username is " + username);
+dbHelper t = new dbHelper();
 String role = t.getRoles(username);
+System.out.println("role is " + role);
 String room;
 String accessCode;
 ArrayList<Room> rooms = t.getData(role);
 %>
 
-<span>Hello <%= username %>. </span>
-<span>Your role is: <%= role %></span>
-<br />
+<div id="holder">
+<h1>DATA CENTER
+<div class="logout"><a href="${pageContext.request.contextPath}/logout">Logout</a></div></h1>
+<div id = "clearancetag"><b>Clearance Level</b><br/><%=role %></div>
 
-<table>
+<table class="t1">
 <tr>
 <td><b>Room</b></td>
 <td><b>Access Code</b></td>
@@ -48,7 +52,6 @@ ArrayList<Room> rooms = t.getData(role);
 }
 %>
 </table>
-
-<a href="${pageContext.request.contextPath}/logout">Logout</a>
+</div>
 </body>
 </html>

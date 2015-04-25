@@ -114,5 +114,78 @@ public class dbHelper {
             return returnData;
 	}
 
+	public boolean insertUser(String username, String password, String role){
+		
+		if(nameExists(username)){
+			return false;
+		}
+		Connection connection = null; // manages connection
+	    PreparedStatement pt = null; // manages prepared statement
+
+	    
+	    
+	        // connect to database 
+	        try {
+	        	String url = "jdbc:mysql://localhost:3306/login";
+	            // establish connection to database
+	            Class.forName("com.mysql.jdbc.Driver");
+	            Connection con = DriverManager.getConnection(url, "root", "youbleedSupes");
+
+	            // query database
+	            pt = con.prepareStatement("INSERT INTO login.users(username, password, role) VALUES (?,?,?);");
+	            pt.setString(1, username);
+	            pt.setString(1, password);
+	            pt.setString(1, role);
+	            
+	        }//end try
+	        catch (SQLException ex) {
+	        	ex.printStackTrace();
+	        } //end catch  
+	        catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		return true;
+	}
+	
+	public boolean nameExists(String username){
+		
+		Connection connection = null; // manages connection
+	    PreparedStatement pt = null; // manages prepared statement
+
+	    
+	    
+	        // connect to database 
+	        try {
+	        	String url = "jdbc:mysql://localhost:3306/login";
+		Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url, "root", "youbleedSupes");
+
+        // query database
+        pt = con.prepareStatement("SELECT username FROM login.users WHERE username=?");
+        pt.setString(1, username);
+        // process query results
+        ResultSet rs = pt.executeQuery();
+        
+        if(rs.next()){
+        	rs.close();
+            return true;
+       } 
+        rs.close();
+       
+    }//end try
+    catch (SQLException ex) {
+    	ex.printStackTrace();
+    } //end catch  
+    catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+		
+		
+		
+		return false;
+	}
+	
 }
 

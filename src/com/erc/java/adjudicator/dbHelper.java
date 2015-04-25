@@ -56,9 +56,24 @@ public class dbHelper {
 	public ArrayList<Room> getData(String role){
 		ArrayList<Room> returnData = new ArrayList<Room>();
 	
+		
+		String query;
+		
+        switch (role) {
+            case "PEON":  	query = "SELECT * FROM login.data WHERE role = 'PEON'";
+                     		break;
+            case "USER":  	query = "SELECT * FROM login.data WHERE role= 'PEON' or role ='USER'";
+            				break;
+            case "ADMIN":  	query = "SELECT * FROM login.data WHERE role= 'PEON' or role ='USER' or role ='ADMIN'";
+                     		break;            
+            default: 		query = "SELECT * FROM login.data";
+                     		break;
+        }
 		Connection connection = null; // manages connection
 	    PreparedStatement pt = null; // manages prepared statement
 
+	    
+	    
 	        // connect to database usernames and query database
 	        try {
 	        	String url = "jdbc:mysql://localhost:3306/login";
@@ -67,27 +82,27 @@ public class dbHelper {
 	            Connection con = DriverManager.getConnection(url, "root", "youbleedSupes");
 
 	            // query database
-	            pt = con.prepareStatement("SELECT * FROM login.data WHERE role=?");
-	            pt.setString(1, role);
+	            pt = con.prepareStatement(query);
+	            
 	            
 	            // process query results
 	            ResultSet rs = pt.executeQuery();
 	            
 	            while(rs.next()){
 	         
-	                String access;
-	                String room;
-	                room = rs.getString("room");
-	                access = rs.getString("accesscode");
+	                String dbAccess;
+	                String dbRoom;
+	                String dbRole;
+	                dbRoom = rs.getString("room");
+	                dbAccess = rs.getString("accesscode");
+	                dbRole = rs.getString("role");
 	                
-	                returnData.add(new Room (room, access));
+	                returnData.add(new Room (dbRoom, dbAccess,dbRole));
 
-	          
-
-	                rs.close();
-	                return returnData;
+	                
 	           } 
-	            
+		        rs.close();
+
 	        }//end try
 	        catch (SQLException ex) {
 	        	ex.printStackTrace();
@@ -96,8 +111,7 @@ public class dbHelper {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	        return null;
-		
+            return returnData;
 	}
 
 }

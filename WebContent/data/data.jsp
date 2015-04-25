@@ -35,12 +35,14 @@ ArrayList<Room> rooms = t.getData(role);
 <tr>
 <td><b>Room</b></td>
 <td><b>Access Code</b></td>
+<td><b>Role</b></td>
 </tr>
 <% for(Room r : rooms){
 %>
 <tr>
 <td><%=r.getName()%></td>
 <td><%=r.getAccess()%></td>
+<td><%=r.getRole()%></td>
 </tr>	
 <%	
 }

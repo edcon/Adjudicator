@@ -9,6 +9,10 @@ public Room(String name, String access){
 	this.access = access;
 }
 
+public Room(){
+	
+}
+
 public String getName(){
 	return name;
 }

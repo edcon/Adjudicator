@@ -13,8 +13,10 @@
 <body>
 <%@ page import= "com.erc.java.adjudicator.dbHelper"%>
 <jsp:useBean id="link" scope="application" class = "com.erc.java.adjudicator.dbHelper"/>
+
 <%@ page import= "com.erc.java.adjudicator.Room"%>
 <jsp:useBean id="link2" scope="application" class = "com.erc.java.adjudicator.Room"/>
+
 <%@ page import= "java.util.ArrayList" %>
 <%
 String username = request.getRemoteUser();
@@ -30,11 +32,15 @@ ArrayList<Room> rooms = t.getData(role);
 <br />
 
 <table>
+<tr>
+<td><b>Room</b></td>
+<td><b>Access Code</b></td>
+</tr>
 <% for(Room r : rooms){
 %>
 <tr>
-<td><%r.getName();%></td>
-<td><%r.getAccess(); %></td>
+<td><%=r.getName()%></td>
+<td><%=r.getAccess()%></td>
 </tr>	
 <%	
 }

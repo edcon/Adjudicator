@@ -73,7 +73,7 @@ public class dbHelper {
 	            // process query results
 	            ResultSet rs = pt.executeQuery();
 	            
-	            if(rs.next()){
+	            while(rs.next()){
 	         
 	                String access;
 	                String room;
@@ -82,7 +82,8 @@ public class dbHelper {
 	                
 	                returnData.add(new Room (room, access));
 
-	                   
+	          
+
 	                rs.close();
 	                return returnData;
 	           } 

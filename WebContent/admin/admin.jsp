@@ -21,6 +21,7 @@ String username = request.getRemoteUser();
 
 
 <span>Hello <%= username %>. This is a secure resource (admin)</span>
+<p> <a href="http://localhost:8080/Adjudicator/data/data.jsp"> View Data</a> </p>
 
 <br />
 <a href="${pageContext.request.contextPath}/logout">Logout</a>

@@ -11,17 +11,20 @@
 <title>Welcome</title>
 </head>
 <body>
+<%@ page import= "com.erc.java.adjudicator.dbHelper"%>
+<jsp:useBean id="link" scope="application" class = "com.erc.java.adjudicator.dbHelper"/>
 
 
 <%
 String username = request.getRemoteUser();
-
+dbHelper t=new dbHelper();
+String role = t.getRoles(username);
 %>
 
 
 
-<span>Hello <%= username %>. This is a secure resource (admin)</span>
-
+<span>Hello <%= username %>. </span>
+<span>, Your role is: <%= role %></span>
 <br />
 <a href="${pageContext.request.contextPath}/logout">Logout</a>
 </body>

@@ -5,10 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Modify Data Result</title>
+<link rel="stylesheet" href="css/theme.css"/>
 </head>
 <body>
 
-
+<div id="messagebox">
 <%@ page import= "com.erc.java.adjudicator.dbHelper"%>
 <jsp:useBean id="link" scope="application" class = "com.erc.java.adjudicator.dbHelper"/>
 	<% String executor = request.getRemoteUser();%>
@@ -23,14 +24,15 @@
  dbHelper t=new dbHelper();
  int changedRole = t.modifyData(executor, room, newCode, newRole);
  if(changedRole==1){ %> 
+ 	<img src="img/success.png"/><br/>
 	 <span>0x01: SUCCESS! You updated the information for the <%=room%>.</span>	 
  <%}else if(changedRole==2){ %>
- 	 <span>Error 0x02: Access codes must be exactly 5 digits (0-9).</span>
+ 	 <img src="img/error.png"/><br/><span>Error 0x02: Access codes must be exactly 5 digits (0-9).</span>
  <%}else if(changedRole==3){
-	 %><span>Error 0x03: Sorry, but you cannot elevate data to the <%=newRole%> level. This is higher than your own.</span>
+	 %><img src="img/error.png"/><br/><span>Error 0x03: Sorry, but you cannot elevate data to the <%=newRole%> level. This is higher than your own.</span>
 <%}else{%>
-	<span>Error 0x04: Database Connection Error. This isn't your fault.</span>
+	<img src="img/error.png"/><br/><span>Error 0x04: Database Connection Error. This isn't your fault.</span>
 <%}%>
-  
+  </div>
 </body>
 </html>

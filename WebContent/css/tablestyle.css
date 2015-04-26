@@ -1,25 +1,3 @@
-h1{
-text-align: center;	
-}
-
-#holder{
-	width: 50%;
-	margin: auto auto;
-}
-
-.logout{
-	margin-top: 0px;
-	text-align:center;
-	font-size: 12px;
-	padding: 5px;
-}
-
-a:visited{
-	margin: 0px;
-	text-align: center;
-	text-decoration: none;
-}
-
 .t1{
 	border: 3px solid #E5E5E5;
 	width: 100%;
@@ -28,15 +6,14 @@ a:visited{
 	background: #F7F7F7;
 }
 
+.t2{
+	color: #F7F7F7;
+}
+
 #clearancetag{
-	margin: auto auto;
+	margin: 10px auto;
 	text-align: center;
 	padding: 10px;
 	background: #F7F7F7;
-	border: 3px solid #E5E5E5;
-}
-
-body{
-	background: #F0F0F0;
-	font-family: Arial, sans-serif;
+	border: 3px solid #3b96ff;
 }

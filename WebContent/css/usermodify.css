@@ -1,0 +1,31 @@
+table{
+	margin: 50px auto;
+	color: #F7F7F7;
+}
+td{
+	padding: 10px;
+}
+
+.toprow{
+	font-weight: bold;
+}
+
+body{
+	background: #F7F7F7;
+}
+
+h1{
+	font-family: Arial, sans-serif;
+	margin-bottom: 0px;
+}
+
+#container{
+	text-align: center;
+	width: 50%;
+	margin: auto;
+}
+
+.loggedin{
+	font-size: 12px;
+	margin-top: 0px;
+}

@@ -65,6 +65,7 @@ public class ErcLoginModule implements LoginModule {
 					
 					Connection connection = null; // manages connection
 				    PreparedStatement pt = null; // manages prepared statement
+				    name = name.toLowerCase();
 	                log.log(Level.FINE, "OUTSIDE OF TRY: %@\n", name);
 
 				        // connect to database usernames and query database
@@ -72,7 +73,7 @@ public class ErcLoginModule implements LoginModule {
 				        	String url = "jdbc:mysql://localhost:3306/login";
 				            // establish connection to database
 				            Class.forName("com.mysql.jdbc.Driver");
-				            Connection con = DriverManager.getConnection(url, "root", "youbleedSupes");
+				            Connection con = DriverManager.getConnection(url, "root", "LizardTree91");
 
 				            // query database
 				            pt = con.prepareStatement("SELECT * FROM login.users WHERE username=?");

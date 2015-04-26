@@ -1,7 +1,7 @@
 USE login;
 CREATE TABLE login.data(
 	role VARCHAR(20) NOT NULL,
-	room VARCHAR(40) NOT NULL,
+	room VARCHAR(40) NOT NULL PRIMARY KEY,
 	accesscode VARCHAR(5) NOT NULL	
 );
 

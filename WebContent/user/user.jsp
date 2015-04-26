@@ -11,7 +11,7 @@
 <%
 String username = request.getRemoteUser();
 %>
-<span>Hello <%= username %>. This is a secure resource (User)</span>
+<span>Hello <%= username %>. This is a secure resource (Peon)</span>
 <br />
 <a href="${pageContext.request.contextPath}/logout">Logout</a>
 </body>

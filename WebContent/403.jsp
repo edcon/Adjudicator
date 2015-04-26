@@ -1,3 +1,6 @@
+<%@ page language="java" 
+  contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 <head>
 <style>
@@ -24,7 +27,7 @@ String role = t.getRoles(username);
 <h1>403 : Access Forbidden</h1>
 <img src="../img/stopsign.png"/>
 <h3>Sorry, <%=username %>, but this is a restricted area.<br/>
-	Your clearance level of <%=role %> is not adequate.</h3>
+	Your clearance level of <%=role %> is inadequate.</h3>
 </body>
 </div>
 

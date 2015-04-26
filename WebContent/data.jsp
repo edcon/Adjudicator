@@ -9,7 +9,8 @@
 <meta http-equiv="Content-Type" 
   content="text/html; charset=UTF-8" />
 <title>Welcome</title>
-<link rel="stylesheet" href="../css/tablestyle.css" type="text/css"/>
+<link rel="stylesheet" href="css/tablestyle.css" type="text/css"/>
+<link rel="stylesheet" href="css/theme.css" type="text/css"/>
 </head>
 <body>
 <%@ page import= "com.erc.java.adjudicator.dbHelper"%>
@@ -31,8 +32,18 @@ ArrayList<Room> rooms = t.getData(role);
 %>
 
 <div id="holder">
-<h1>DATA CENTER
-<div class="logout"><a href="${pageContext.request.contextPath}/logout">Logout</a></div></h1>
+<ul id="nav">
+<li><a href="index.jsp">Home</a></li>
+<li><a href="data.jsp">Data</a></li>
+<li><a href="userlist.jsp">User List</a></li>
+<li><a href="modifyData.jsp">Data Config</a></li>
+<li><a href="modifyUser.jsp">User Config</a></li>
+<li><a href="addData.jsp">Add Data</a></li>
+<li><a href="index.jsp">Add Users</a></li>
+</ul>
+
+<h1>DATA CENTER</h1>
+<div class="loggedin">logged in as admin | <a href="${pageContext.request.contextPath}/logout">logout</a></div>
 <div id = "clearancetag"><b>Clearance Level</b><br/><%=role %></div>
 
 <table class="t1">

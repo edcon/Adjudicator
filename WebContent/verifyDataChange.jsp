@@ -33,6 +33,12 @@
 <%}else{%>
 	<img src="img/error.png"/><br/><span>Error 0x04: Database Connection Error. This isn't your fault.</span>
 <%}%>
+
+<br/>
+<ul>
+<li><a href="data.jsp">Return to Data</a></li>
+<li><a href="modifyData.jsp">Return to Data Config</a></li>
+</ul>
   </div>
 </body>
 </html>

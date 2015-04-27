@@ -65,6 +65,9 @@ a:visited{
       color: #069;
       border-right: 1px solid #ccc; }
 
+a, a:hover, a:visited{
+	color: #FA6900;
+}
 #nav li a:hover {
       color: #FA6900;
       background-color: #fff; }
@@ -77,4 +80,12 @@ a:visited{
 	margin-top: 100px;
 	text-align: center;
 	color: #F7F7F7;
+}
+
+#messagebox a{
+	color: #F7F7F7;
+}
+
+#messagebox a:visited{
+	color: #F7F7F7;	
 }

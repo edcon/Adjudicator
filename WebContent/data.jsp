@@ -43,7 +43,7 @@ ArrayList<Room> rooms = t.getData(role);
 </ul>
 
 <h1>DATA CENTER</h1>
-<div class="loggedin">logged in as admin | <a href="${pageContext.request.contextPath}/logout">logout</a></div>
+<div class="loggedin">logged in as <%=username %> | <a href="${pageContext.request.contextPath}/logout">logout</a></div>
 <div id = "clearancetag"><b>Clearance Level</b><br/><%=role %></div>
 
 <table class="t1">
